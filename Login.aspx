@@ -5,22 +5,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Consumables Management System</title>
+    <link rel="Shortcut Icon" href="~/Images/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-    <center>
     <form id="frmLogin" runat="server">
+        <center>
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/Banner.png" />
+            <br />
+            <br />
+            <br />
+            <br />
         <asp:Label ID="lblUsername" runat="server" Text="Username:"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="valUsername" runat="server" 
-            ControlToValidate="TxtUsername" ErrorMessage="*"></asp:RequiredFieldValidator>
+            ControlToValidate="txtUsername" ErrorMessage="*" ForeColor="Red" />
         <br />
         <br />
         <asp:Label ID="lblPassword" runat="server" Text="Password:"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="valPassword" runat="server" 
-            ControlToValidate="TxtPassword" ErrorMessage="*"></asp:RequiredFieldValidator>
+            ControlToValidate="txtPassword" ErrorMessage="*" ForeColor="Red" />
         <br />
         <br />
         <asp:Label ID="lblMessage" runat="server"></asp:Label>

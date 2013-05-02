@@ -1,0 +1,26 @@
+"Inventory Status" - Main Page After Login
+	-Has (2) Gridviews - 1 for Summary, 1 for Needs Ordered
+
+"Place Orders" - Orders Page Accessible From Main Page Gridview of 'Needs Ordered'
+	-Has (1) Detailsview that is initially hidden for placing a new order
+	-Has (1) Gridview describing what needs to be ordered
+
+"Reports" - Accessible From Main Page As Link
+	-Allows for parameter changing of dates, active only, location (with total as selectable option)
+
+"Employee Input" - Accessible After Login
+	-Has (1) Gridview with in-row editing
+
+
+Need Stored Procedures:
+	(Select)
+		-1 to Produce summary of current inventory levels of consumables
+		-1 to Produce summary of current inventory levels of consumables that need to be ordered
+		-1 to product reports of everything
+	(Update)
+		-1 that updates levels of product on hand per location, etc.
+	(Inserts)
+		-1 to do inserts for orders that places order...
+
+Extra:
+	-Sends email notification dependent (confirmation) on order placed
