@@ -10,7 +10,7 @@
 <body>
     <form id="frmLogin" runat="server">
         <center>
-            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/Banner.png" />
+            <asp:Image ID="imgBanner" runat="server" ImageUrl="~/Images/Banner.png" />
             <br />
             <br />
             <br />
