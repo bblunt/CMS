@@ -14,8 +14,8 @@
 
 Need Stored Procedures:
 	(Select)
-		-1 to Produce summary of current inventory levels of consumables && to Produce summary of current inventory levels of consumables that need to be ordered
-		-1 to produce reports of everything
+		X-1 to Produce summary of current inventory levels of consumables && to Produce summary of current inventory levels of consumables that need to be ordered
+		X-1 to produce reports of everything
 		-1 to Produce summary of Item costs at different sellers (for selection for orders)
 	(Update)
 		-1 that updates levels of product on hand per location, etc.
