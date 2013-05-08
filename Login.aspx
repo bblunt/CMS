@@ -35,6 +35,12 @@
         <br />
         <asp:Button ID="btnLogin" runat="server" Text="Login" Width="115px" />
         </center>
+        <asp:SqlDataSource ID="dsLogin" runat="server"
+            ConnectionString="<%$ ConnectionStrings:CMSConnectionString %>"
+            ProviderName="<%$ ConnectionStrings:CMSConnectionString.ProviderName %>"
+            SelectCommand="GROUP1.&quot;CMSLogin_Sel&quot;"
+            SelectCommandType="StoredProcedure">
+        </asp:SqlDataSource>
     </form>
 </body>
 </html>

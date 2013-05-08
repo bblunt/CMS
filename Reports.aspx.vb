@@ -1,5 +1,5 @@
 ﻿
-Partial Class Manager4
+Partial Class Reports
     Inherits System.Web.UI.Page
 
 End Class
