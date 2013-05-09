@@ -20,7 +20,38 @@ Need Stored Procedures:
 	(Update)
 		-1 that updates levels of product on hand per location, etc.
 	(Inserts)
-		-1 to do inserts for orders that places order...
+		X-1 to do inserts for orders that places order...
 
 Extra:
 	-Sends email notification dependent (confirmation) on order placed
+
+Limitations to DB2:
+	-Can't call a stored procedure into an sqlconnection variable in vb (due to needing to specify a driver which isn't supported (some databases can natively handle asp .net sqlconnections)
+	-Can't utilize multiple cursors in a single stored procedure
+	-Can't set default values for input parameters
+
+
+xSupplierSupply_Sel
+XOrders_Sel
+XLocation_Sel
+XSupply_Sel
+XSupplier_Sel
+
+Supply_Upd
+Supply_Ins
+Supplier_Upd
+Supplier_Ins
+
+
+
+Still need to do (minimum):
+	Reports page.
+	A way to see costs for each supplier for a particular supply on order page
+	Employee page
+	Update procedure for employee page
+
+Still need to do (maximum):
+	Insert Supplier Page
+	Insert Supply Page
+	Insert Supplier_Supply Page
+	Ins/Update procedures for each
