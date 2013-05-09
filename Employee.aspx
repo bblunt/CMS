@@ -24,32 +24,37 @@
         </left>
         <center>
         <br />
-        <asp:GridView ID="gvConsumables" runat="server" AutoGenerateColumns="False" DataKeyNames="Supply_ID,Delivery_ID"
+        <asp:GridView ID="gvConsumables" runat="server" AutoGenerateColumns="False" DataKeyNames="Supply_ID,Location_ID,Delivery_ID"
             DataSourceID="dsConsumables" AllowSorting="true" Width="1058" BackColor="LightBlue" BorderColor="DarkBlue"
             ForeColor="Black">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                <asp:TemplateField HeaderText="Consumable">
+                <asp:TemplateField HeaderText="Consumable" SortExpression="Name">
                     <ItemTemplate>
                         <asp:Label ID="lblConsumable" runat="server" Text='<%# Eval("Name")%>' />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Quantity On Hand">
+                <asp:TemplateField HeaderText="Quantity On Hand" SortExpression="Quantity_On_Hand">
                     <ItemTemplate>
                         <asp:Label ID="lblQuantityOnHand" runat="server" Text='<%# Eval("Quantity_On_Hand")%>' />
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtQuantityOnHand" runat="server" Text='<%# Eval("Quantity_On_Hand")%>' />
                         <asp:RequiredFieldValidator ID="valQuantityOnHand" runat="server" 
-                            ControlToValidate="txtQuantityOnHand" ErrorMessage="*" ForeColor="Red" />
+                                ControlToValidate="txtQuantityOnHand" ErrorMessage="*" ForeColor="Red" />
+                        <asp:CompareValidator ID="valQuantityOnHandNum" runat="server" ControlToValidate="txtQuantityOnHand" Type="Integer"
+                            Operator="DataTypeCheck" Display="Dynamic" Text="Please enter valid numeric value." ForeColor="Red" />
+                        <asp:RangeValidator ID="valQuantityOnHandRange" runat="server" ControlToValidate="txtQuantityOnHand" Type="Integer"
+                            MinimumValue="1" MaximumValue="9999" Display="Dynamic" Text="Please enter a numer value greater than 0, but less than 9999."
+                            ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Quantity When More Needed">
+                <asp:TemplateField HeaderText="Quantity When More Needed" SortExpression="Economic_Order_Quantity">
                     <ItemTemplate>
                         <asp:Label ID="lblEconomicOrderQuantity" runat="server" Text='<%# Eval("Economic_Order_Quantity")%>' />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Last Ordered">
+                <asp:TemplateField HeaderText="Last Ordered" SortExpression="Last_Order">
                     <ItemTemplate>
                         <asp:Label ID="lblLastOrder" runat="server" Text='<%# Eval("Last_Order")%>' />
                     </ItemTemplate>
@@ -73,8 +78,10 @@
             ProviderName="<%$ ConnectionStrings:CMSConnectionString.ProviderName %>" 
             SelectCommand="GROUP1.&quot;CURINVENTORY_SEL&quot;" 
             SelectCommandType="StoredProcedure" 
-            UpdateCommand="GROUP1.&quot;CURINVENTORY_UPD&quot;" 
-            UpdateCommandType="StoredProcedure">
+            UpdateCommand="UPDATE	GROUP1.&quot;SUPPLY_LOCATION&quot;
+                            SET	QUANTITY_ON_HAND	=	@NewQuantity
+                            WHERE	DELIVERY_ID		=	@Delivery_ID
+                            AND     LOCATION_ID     =   @Location_ID;">
             <SelectParameters>
                 <asp:Parameter Name="Location_ID" Type="Int32" DefaultValue="0" />
                 <asp:Parameter Name="Active" Type="Char" DefaultValue="Y" />
@@ -82,6 +89,7 @@
             </SelectParameters>
             <UpdateParameters>
                 <asp:Parameter Name="Delivery_ID" Type="Int32" DefaultValue="0" />
+                <asp:Parameter Name="Location_ID" Type="Int32" DefaultValue="0" />
                 <asp:Parameter Name="NewQuantity" Type="Decimal" DefaultValue="0" />
             </UpdateParameters>
         </asp:SqlDataSource>

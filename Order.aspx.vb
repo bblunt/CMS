@@ -33,7 +33,10 @@ Partial Class Order
     End Sub
 
     Protected Sub dvOrder_ItemInserting(sender As Object, e As System.Web.UI.WebControls.DetailsViewInsertEventArgs) Handles dvOrder.ItemInserting
-        Me.dsOrder.InsertParameters.Item("OrderID").DefaultValue = CInt(Int((100000 - 100 + 4) * Rnd() + 7))
+        Dim pOrderId As System.Int32 = CInt(Int((100000 - 100 + 4) * Rnd() + 7))
+        Me.lblOrderID.Visible = True
+        Me.lblOrderID.Text = System.Convert.ToString(pOrderId)
+        Me.dsOrder.InsertParameters.Item("OrderID").DefaultValue = pOrderId
         Me.dsOrder.InsertParameters.Item("SupplierID").DefaultValue = _
             CType(Me.dvOrder.FindControl("ddlSupplier"), WebControls.DropDownList).SelectedItem.Value
         Me.dsOrder.InsertParameters.Item("SupplyID").DefaultValue = _
@@ -42,11 +45,14 @@ Partial Class Order
             CType(Me.dvOrder.FindControl("ddlLocation"), WebControls.DropDownList).SelectedItem.Value
         Me.dsOrder.InsertParameters.Item("NumToOrder").DefaultValue = _
             System.Convert.ToDecimal(CType(Me.dvOrder.FindControl("txtNumToOrder"), WebControls.TextBox).Text)
+        Me.lblOrderID.Visible = False
     End Sub
 
     Protected Sub dvOrder_ItemInserted(sender As Object, e As System.Web.UI.WebControls.DetailsViewInsertedEventArgs) Handles dvOrder.ItemInserted
         Me.lblMessage.Visible = True
-        Me.lblMessage.Text = "Order placed successfully!"
+        Me.lblOrderID.Visible = True
+        Me.lblMessage.Text = "Order #: " & Me.lblOrderID.Text & " placed successfully!"
+        Me.lblOrderID.Visible = False
         Me.dvOrder.ChangeMode(DetailsViewMode.Insert)
         Me.gvOrder.DataBind()
     End Sub

@@ -11,7 +11,8 @@
     <form id="frmReports" runat="server">
     <div>
         <center>
-            <asp:ImageButton ID="imgBanner" runat="server" ImageUrl="~/Images/Banner.png" />
+            <asp:ImageButton ID="imgBanner" runat="server" ImageUrl="~/Images/Banner.png"
+                CausesValidation="false" />
             <br />
             <br />
             <asp:LinkButton ID="btnLogout" runat="server" Text="Logout" />

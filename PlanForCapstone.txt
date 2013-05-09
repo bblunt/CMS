@@ -46,12 +46,11 @@ Supplier_Ins
 
 Still need to do (minimum):
 	Reports page.
-	A way to see costs for each supplier for a particular supply on order page
-	Employee page
-	Update procedure for employee page
+	XA way to see costs for each supplier for a particular supply on order page
+	XEmployee page
+	XUpdate procedure for employee page
 
 Still need to do (maximum):
-	Insert Supplier Page
-	Insert Supply Page
-	Insert Supplier_Supply Page
+	Format Min/Max/Actual Shipping times on Orders page to just show days
+	Insert Supplier/Supply/Supplier_Supply  Page
 	Ins/Update procedures for each

@@ -11,13 +11,15 @@
     <form id="frmOrder" runat="server">
     <div>
         <center>
-            <asp:ImageButton ID="imgBanner" runat="server" ImageUrl="~/Images/Banner.png" />
+            <asp:ImageButton ID="imgBanner" runat="server" ImageUrl="~/Images/Banner.png"
+                CausesValidation="false" />
             <br />
             <br />
             <asp:LinkButton ID="btnLogout" runat="server" Text="Logout" />
             <br />
             <br />
             <asp:Label ID="lblMessage" runat="server" ForeColor="Red" />
+            <asp:Label ID="lblOrderID" runat="server" Visible="false" />
             <br />
             <asp:DetailsView ID="dvOrder" runat="server" DataSourceID="dsOrder" DefaultMode="Insert"
                 AutoGenerateRows="false">
@@ -44,6 +46,13 @@
                     <asp:TemplateField HeaderText="Number to be Ordered">
                         <InsertItemTemplate>
                             <asp:TextBox ID="txtNumToOrder" runat="server" />
+                            <asp:RequiredFieldValidator ID="valNumToOrder" runat="server" 
+                                ControlToValidate="txtNumToOrder" ErrorMessage="*" ForeColor="Red" />
+                            <asp:CompareValidator ID="valNumToOrderNum" runat="server" ControlToValidate="txtNumToOrder" Type="Integer"
+                                Operator="DataTypeCheck" Display="Dynamic" Text="Please enter valid numeric value." ForeColor="Red" />
+                            <asp:RangeValidator ID="valNumToOrderRange" runat="server" ControlToValidate="txtNumToOrder" Type="Integer"
+                                MinimumValue="1" MaximumValue="9999" Display="Dynamic" Text="Please enter a numer value greater than 0, but less than 9999."
+                                ForeColor="Red" />
                         </InsertItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ShowHeader="false" ItemStyle-HorizontalAlign="Center">
@@ -55,11 +64,41 @@
             </asp:DetailsView>
             <br />
             <br />
-            <asp:LinkButton ID="hlkShowPastOrders" runat="server" Text="Show Past Orders" />
-            <asp:GridView ID="gvOrder" runat="server" AutoGenerateColumns="True" DataKeyNames="Order_ID"
+            <asp:GridView ID="gvSuppliers" runat="server" AutoGenerateColumns="false" DataKeyNames="Supply_ID,Supplier_ID"
+                DataSourceID="dsConsumableSupplier" AllowSorting="true">
+                <Columns>
+                    <asp:BoundField HeaderText="Consumable" DataField="Name" SortExpression="Name" />
+                    <asp:BoundField HeaderText="Supplier" DataField="Company" SortExpression="Company" />
+                    <asp:BoundField HeaderText="Price" DataField="Cost" SortExpression="Cost"
+                        DataFormatString="{0:C2}" />
+                </Columns>
+            </asp:GridView>
+            <br />
+            <br />
+            <br />
+            <br />
+            <asp:LinkButton ID="hlkShowPastOrders" runat="server" Text="Show Past Orders" CausesValidation="false" />
+            <asp:GridView ID="gvOrder" runat="server" AutoGenerateColumns="false" DataKeyNames="Order_ID"
                 DataSourceID="dsOrder" AllowSorting="true" Width="1058" BackColor="LightBlue" BorderColor="DarkBlue"
                 ForeColor="Black" Visible="false">
                 <AlternatingRowStyle BackColor="White" />
+                <Columns>
+                    <asp:BoundField HeaderText="Order ID" DataField="Order_ID" SortExpression="Order_ID" />
+                    <asp:BoundField HeaderText="Subtotal" DataField="SubTotal" SortExpression="SubTotal"
+                        DataFormatString="{0:C2}" />
+                    <asp:BoundField HeaderText="Total Delivery Cost" DataField="Total_Delivery_Cost"
+                        SortExpression="Total_Delivery_Cost" DataFormatString="{0:C2}" />
+                    <asp:BoundField HeaderText="Tax" DataField="Tax" SortExpression="Tax" DataFormatString="{0:C2}" />
+                    <asp:BoundField HeaderText="Total" DataField="Total" SortExpression="Total" DataFormatString="{0:C2}" />
+                    <asp:BoundField HeaderText="Paid" DataField="Paid" SortExpression="Paid" />
+                    <asp:BoundField HeaderText="Order Date" DataField="Order_Date" SortExpression="Order_Date" />
+                    <asp:BoundField HeaderText="Minimum Shipping Time" DataField="Min_Shipping_Time"
+                        SortExpression="Min_Shipping_Time" />
+                    <asp:BoundField HeaderText="Maximum Shipping Time" DataField="Max_Shipping_Time"
+                        SortExpression="Max_Shipping_Time" />
+                    <asp:BoundField HeaderText="Actual Shipping Time" DataField="Actual_Shipping_Time"
+                        SortExpression="Actual_Shipping_Time" />
+                </Columns>
                 <FooterStyle BackColor="WhiteSmoke" />
                 <HeaderStyle BackColor="WhiteSmoke" Font-Bold="True" />
                 <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" 
