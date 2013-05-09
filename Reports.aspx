@@ -12,6 +12,11 @@
     <div>
         <center>
             <asp:ImageButton ID="imgBanner" runat="server" ImageUrl="~/Images/Banner.png" />
+            <br />
+            <br />
+            <asp:LinkButton ID="btnLogout" runat="server" Text="Logout" />
+            <br />
+            <br />
         </center>
     </div>
     </form>

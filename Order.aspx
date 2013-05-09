@@ -14,6 +14,9 @@
             <asp:ImageButton ID="imgBanner" runat="server" ImageUrl="~/Images/Banner.png" />
             <br />
             <br />
+            <asp:LinkButton ID="btnLogout" runat="server" Text="Logout" />
+            <br />
+            <br />
             <asp:Label ID="lblMessage" runat="server" ForeColor="Red" />
             <br />
             <asp:DetailsView ID="dvOrder" runat="server" DataSourceID="dsOrder" DefaultMode="Insert"

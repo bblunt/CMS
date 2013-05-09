@@ -24,16 +24,17 @@
         <br />
         <asp:Label ID="lblPassword" runat="server" Text="Password:"></asp:Label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtPassword" runat="server" TextMode=Password />
         <asp:RequiredFieldValidator ID="valPassword" runat="server" 
             ControlToValidate="txtPassword" ErrorMessage="*" ForeColor="Red" />
         <br />
         <br />
-        <asp:Label ID="lblMessage" runat="server"></asp:Label>
+        <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <br />
         <br />
         <asp:Button ID="btnLogin" runat="server" Text="Login" Width="115px" />
+        <asp:Label ID="lblLoginAttempts" runat="server" Text="0" Visible="false" />
         </center>
         <asp:SqlDataSource ID="dsLogin" runat="server"
             ConnectionString="<%$ ConnectionStrings:CMSConnectionString %>"

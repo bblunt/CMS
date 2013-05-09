@@ -18,6 +18,8 @@
             <br />
             <asp:HyperLink ID="hlkPlaceOrder" runat="server" Text="Place New Order" NavigateUrl="~/Order.aspx" />
             <br />
+            <asp:LinkButton ID="btnLogout" runat="server" Text="Logout" />
+            <br />
             <br />
             <br />
         </center>
