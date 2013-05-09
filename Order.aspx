@@ -19,7 +19,7 @@
             <br />
             <br />
             <asp:Label ID="lblMessage" runat="server" ForeColor="Red" />
-            <asp:Label ID="lblOrderID" runat="server" Visible="false" />
+            <asp:Label ID="lblOrderID" runat="server" Text="75549" Visible="false" />
             <br />
             <asp:DetailsView ID="dvOrder" runat="server" DataSourceID="dsOrder" DefaultMode="Insert"
                 AutoGenerateRows="false">
@@ -51,7 +51,7 @@
                             <asp:CompareValidator ID="valNumToOrderNum" runat="server" ControlToValidate="txtNumToOrder" Type="Integer"
                                 Operator="DataTypeCheck" Display="Dynamic" Text="Please enter valid numeric value." ForeColor="Red" />
                             <asp:RangeValidator ID="valNumToOrderRange" runat="server" ControlToValidate="txtNumToOrder" Type="Integer"
-                                MinimumValue="1" MaximumValue="9999" Display="Dynamic" Text="Please enter a numer value greater than 0, but less than 9999."
+                                MinimumValue="1" MaximumValue="9999" Display="Dynamic" Text="Please enter a numeric value greater than 0, but less than 9999."
                                 ForeColor="Red" />
                         </InsertItemTemplate>
                     </asp:TemplateField>

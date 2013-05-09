@@ -45,7 +45,7 @@
                         <asp:CompareValidator ID="valQuantityOnHandNum" runat="server" ControlToValidate="txtQuantityOnHand" Type="Integer"
                             Operator="DataTypeCheck" Display="Dynamic" Text="Please enter valid numeric value." ForeColor="Red" />
                         <asp:RangeValidator ID="valQuantityOnHandRange" runat="server" ControlToValidate="txtQuantityOnHand" Type="Integer"
-                            MinimumValue="1" MaximumValue="9999" Display="Dynamic" Text="Please enter a numer value greater than 0, but less than 9999."
+                            MinimumValue="0" MaximumValue="9999" Display="Dynamic" Text="Please enter a numeric value greater than -1, but less than 9999."
                             ForeColor="Red" />
                     </EditItemTemplate>
                 </asp:TemplateField>
