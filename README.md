@@ -1,4 +1,4 @@
 CMS
 ===
 
-Consumables Management System (Capstone Project)
+Consumables Management System
